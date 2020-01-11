@@ -1,7 +1,7 @@
 import React from 'react'
 import '../sass/style.scss'
 import Board from './Board'
-import { click, restart } from '../actions'
+import { cickOnSquare, restart } from '../actions'
 import { useSelector, useDispatch } from 'react-redux'
 
 function App () {
@@ -10,7 +10,7 @@ function App () {
   return (
     <main>
       <h1 className='heading'>Tic Tac Toe</h1>
-      <Board state={state} onDispatch={(obj) => dispatch(click(obj))} />
+      <Board state={state} onDispatch={(obj) => dispatch(cickOnSquare(obj))} />
       <button className='restart-btn' onClick={() => dispatch(restart())}>Restart</button>
     </main>
   )

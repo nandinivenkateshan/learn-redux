@@ -1,8 +1,8 @@
-export const click = (obj) => {
-  const { boxes, isNext } = obj
+export const cickOnSquare = (obj) => {
+  const { arr, isNext } = obj
   return {
-    type: 'CLICK',
-    arr: boxes,
+    type: 'CLICK_SQUARE',
+    arr,
     isNext
   }
 }

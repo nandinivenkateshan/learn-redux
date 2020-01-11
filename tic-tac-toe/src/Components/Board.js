@@ -3,23 +3,21 @@ import Square from './Square'
 import '../sass/style.scss'
 
 function Board ({ state, onDispatch }) {
-
-   console.log('state', state) 
   const handleClick = (index) => {
-    if (calculateWinner(state.boxes)) {
+    if (calculateWinner(state.arr)) {
       return
     }
     const value = state.isNext ? 'O' : 'X'
-    const arr = state.boxes
+    const arr = state.arr
     arr[index] = value
     const obj = {
-      boxes: arr,
+      arr,
       isNext: !state.isNext
     }
     onDispatch(obj)
   }
 
-  const calculateWinner = (boxes) => {
+  const calculateWinner = (arr) => {
     const winner = [
       [0, 1, 2],
       [3, 4, 5],
@@ -32,8 +30,8 @@ function Board ({ state, onDispatch }) {
     ]
     for (let i = 0; i < winner.length; i++) {
       const [a, b, c] = winner[i]
-      if (boxes[a] && boxes[a] === boxes[b] && boxes[a] === boxes[c]) {
-        return boxes[a]
+      if (arr[a] && arr[a] === arr[b] && arr[a] === arr[c]) {
+        return arr[a]
       }
     }
   }
@@ -51,10 +49,10 @@ function Board ({ state, onDispatch }) {
 
   return (
     <>
-      {winner(state.boxes)}
+      {winner(state.arr)}
       <section className='board'>
-        {state.boxes.map((item, index) => {
-          return <Square key={index} onSquareClick={() => handleClick(index)} val={state.boxes[index]} />
+        {state.arr.map((item, index) => {
+          return <Square key={index} onSquareClick={() => handleClick(index)} val={state.arr[index]} />
         })}
 
       </section>
