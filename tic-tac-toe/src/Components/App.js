@@ -8,7 +8,7 @@ function App () {
   const dispatch = useDispatch()
   const state = useSelector(state => state)
   return (
-    <main>
+    <main className='main'>
       <h1 className='heading'>Tic Tac Toe</h1>
       <Board state={state} onDispatch={(obj) => dispatch(cickOnSquare(obj))} />
       <button className='restart-btn' onClick={() => dispatch(restart())}>Restart</button>

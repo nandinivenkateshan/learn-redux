@@ -1,5 +1,6 @@
 $bg-color: rgb(129, 113, 113);
-
+$break-small: 320px;
+$break-med: 425px;
 
 .heading {
     text-align: center;
@@ -15,7 +16,6 @@ $bg-color: rgb(129, 113, 113);
 
 .square {
     height: 100px;
-    width: 100px;
     background-color: $bg-color;
     line-height: 80px;
     text-align: center;
@@ -24,6 +24,9 @@ $bg-color: rgb(129, 113, 113);
     color: lighten($bg-color, 100);
     margin: 10px;
     flex: 90px;
+    &:hover {
+        background-color: lighten($bg-color, 12);
+    } 
 }
 
 .status {
@@ -45,4 +48,16 @@ $bg-color: rgb(129, 113, 113);
     padding: 10px;
     border: none;
     box-shadow: 4px 4px grey;
+}
+
+.main {
+    @media (max-width: $break-med) {
+        .board {
+            width: 300px;
+        }
+        .square {
+            height: 70px;
+            flex:60px;
+        }
+    }
 }
