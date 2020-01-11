@@ -2,29 +2,24 @@ import React from 'react'
 import Square from './Square'
 import '../sass/style.scss'
 
-class Board extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      boxes: Array(9).fill(null),
-      isNext: false
-    }
-  }
+function Board ({ state, onDispatch }) {
 
-  handleClick (index) {
-    if (this.calculateWinner(this.state.boxes)) {
+   console.log('state', state) 
+  const handleClick = (index) => {
+    if (calculateWinner(state.boxes)) {
       return
     }
-    const value = this.state.isNext ? 'O' : 'X'
-    const arr = this.state.boxes
+    const value = state.isNext ? 'O' : 'X'
+    const arr = state.boxes
     arr[index] = value
-    this.setState({
+    const obj = {
       boxes: arr,
-      isNext: !this.state.isNext
-    })
+      isNext: !state.isNext
+    }
+    onDispatch(obj)
   }
 
-  calculateWinner (boxes) {
+  const calculateWinner = (boxes) => {
     const winner = [
       [0, 1, 2],
       [3, 4, 5],
@@ -43,26 +38,28 @@ class Board extends React.Component {
     }
   }
 
-  render () {
-    const winner = this.calculateWinner(this.state.boxes)
+  function winner (val) {
     let status
+    const winner = calculateWinner(val)
     if (winner) {
       status = <h2 className='winner'>The Winner is {winner} </h2>
     } else {
-      status = <h3 className='status'>Next player : {this.state.isNext ? 'O' : 'X'}</h3>
+      status = <h3 className='status'>Next player : {state.isNext ? 'O' : 'X'}</h3>
     }
-    return (
-      <>
-        {status}
-        <section className='board'>
-          {this.state.boxes.map((item, index) => {
-            return <Square key={index} onSquareClick={() => this.handleClick(index)} val={this.state.boxes[index]} />
-          })}
-
-        </section>
-      </>
-    )
+    return status
   }
+
+  return (
+    <>
+      {winner(state.boxes)}
+      <section className='board'>
+        {state.boxes.map((item, index) => {
+          return <Square key={index} onSquareClick={() => handleClick(index)} val={state.boxes[index]} />
+        })}
+
+      </section>
+    </>
+  )
 }
 
 export default Board

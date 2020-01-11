@@ -1,11 +1,6 @@
 import React from 'react'
-// import '../sass/style.scss'
 
 class Square extends React.Component {
-//   constructor (props) {
-//     super(props)
-//   }
-
   handleClick () {
     this.props.onSquareClick()
   }
