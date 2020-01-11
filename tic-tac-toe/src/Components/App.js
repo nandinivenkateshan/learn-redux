@@ -4,10 +4,11 @@ import Board from './Board'
 
 function App () {
   return (
-    <div className='App'>
+    <main className='App'>
       <h1 className='heading'>Tic Tac Toe</h1>
       <Board />
-    </div>
+      <button className='restart-btn'>Restart</button>
+    </main>
   )
 }
 

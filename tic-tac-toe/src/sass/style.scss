@@ -25,3 +25,24 @@ $bg-color: rgb(129, 113, 113);
     margin: 10px;
     flex: 90px;
 }
+
+.status {
+    @extend .heading;
+    margin-top: 30px;
+    color: $bg-color;
+}
+.winner {
+    @extend .status;
+    color: green;
+}
+
+.restart-btn {
+    color: red;
+    display: block;
+    margin: 0px auto;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    box-shadow: 4px 4px grey;
+}
