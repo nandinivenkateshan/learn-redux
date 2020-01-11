@@ -4,6 +4,8 @@ const counterRuducer = (state = 0, action) => {
       return state + action.payload
     case 'DECREMENT' :
       return state - 1
+    case 'RESET' :
+      return 0
     default :
       return state
   }

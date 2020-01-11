@@ -1,0 +1,27 @@
+$bg-color: rgb(129, 113, 113);
+
+
+.heading {
+    text-align: center;
+}
+
+.board {
+    display: flex;
+    width: 400px;
+    flex-wrap: wrap;
+    border: 1px solid darken($bg-color, 10);
+    margin: 50px auto;
+}
+
+.square {
+    height: 100px;
+    width: 100px;
+    background-color: $bg-color;
+    line-height: 80px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: lighten($bg-color, 100);
+    margin: 10px;
+    flex: 90px;
+}
