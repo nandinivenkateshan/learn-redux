@@ -1,8 +1,12 @@
 import React from 'react'
 import Square from './Square'
 import '../sass/style.scss'
+import { useSelector, useDispatch } from 'react-redux'
+import { cickOnSquare } from '../actions'
 
-function Board ({ state, onDispatch }) {
+function Board () {
+  const dispatch = useDispatch()
+  const state = useSelector(state => state)
   const handleClick = (index) => {
     if (calculateWinner(state.arr)) {
       return
@@ -14,7 +18,7 @@ function Board ({ state, onDispatch }) {
       arr,
       isNext: !state.isNext
     }
-    onDispatch(obj)
+    dispatch(cickOnSquare(obj))
   }
 
   const calculateWinner = (arr) => {
